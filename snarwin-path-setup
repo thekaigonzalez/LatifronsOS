@@ -1,9 +1,0 @@
-#!/usr/local/bin/lua
-
-function write(string)
-    print(arg[0] .. ": " .. string)
-end
-
-
-write("creating SNARWIN_ENV variable.")
-
