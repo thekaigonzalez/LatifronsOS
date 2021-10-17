@@ -3,10 +3,16 @@
 -- Snarwin is a Kux hyperLKernel
 
 local snarboot = require "kernel.boot"
+local sbootstrap = require "kernel.other.bootstrap"
 
 -- snarboot.order:create_boot(0x02, "Test OS", function()
 --     print("test boot")
 -- end)
-
 -- print(snarboot.order.boot_table[2].init())
 
+-- Create a new boot 
+snarboot.order:create_boot(0x02, "Bootstrap Handled", function()
+    print("hello")
+end)
+
+sbootstrap:checkimpl()

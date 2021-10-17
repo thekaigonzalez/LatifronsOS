@@ -1,0 +1,5 @@
+An "implementatoin" is a process which handles snarwin and snarwin's ABIs.
+
+You can manage snarwin implementations using the ` snarwin-impl`' utility
+
+snarwin-impl -S new-implementation

@@ -1,0 +1,27 @@
+#!/usr/local/bin/lua
+
+--- Snarwin Implementation manager
+--[[
+local parser = argparse("script", "An example.")
+parser:argument("input", "Input file.")
+parser:option("-o --output", "Output file.", "a.out")
+parser:option("-I --include", "Include locations."):count("*")
+]]
+
+local argparse = require "kernel.lib.argparse"
+
+local parser = argparse("snarwin-impl")
+    :description "Snarwin Implementation handler script"
+    :epilog "For more information, please see thekaigonzalez.github.io/Snarwin"
+
+parser:flag("-v --version")
+
+parser:option "-S" "Ask Server for \"package\""
+
+
+local args = parser:parse()
+
+if args.version then
+    print("Snarwin Impl. Manager Revision 1.0")
+end
+print(args.S)

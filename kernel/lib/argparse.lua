@@ -1,3 +1,5 @@
+require "kernel.sig" -- get F_OK and F_ERR
+
 local function deep_update(t1, t2)
    for k, v in pairs(t2) do
       if type(v) == "table" then
@@ -191,7 +193,7 @@ local add_help = {"add_help", function(self, value)
          :description "Show this help message and exit."
          :action(function()
             print(self:get_help())
-            return 0
+            return F_OK
          end)
 
       if value ~= true then
@@ -1458,7 +1460,7 @@ end
 
 function Parser:error(msg)
    io.stderr:write(("%s\n\nError: %s\n"):format(self:get_usage(), msg))
-   return 1
+   return F_ERR
 end
 
 -- Compatibility with strict.lua and other checkers:
