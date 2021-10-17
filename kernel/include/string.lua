@@ -9,7 +9,7 @@ end
 
 function split(string)
     local tblt = {}
-    local lns = split(string, " ")
+    local lns = lsplit(string, " ")
     i = 0
     -- works!
 

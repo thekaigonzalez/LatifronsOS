@@ -15,6 +15,11 @@ function bstr:checkimpl()
         end
     else
         print("bootstrap: Error could not find snarwin default implementation")
+        if boot.order.boot_table[2] == nil then
+            print("bootstrap: no OS found on boottable, loading fallback OS")
+            --- if it's errored
+            boot.order.boot_table[1].init();
+        end
         print("bootstrap: starting in default OS: " .. boot.order.boot_table[2].disp_name) -- The default OS should be registered as boottable[2]
         boot.order.boot_table[2].init();
     end
