@@ -4,6 +4,7 @@
 
 local snarboot = require "kernel.boot"
 local sbootstrap = require "kernel.other.bootstrap"
+local sash = require "kernel.other.sash"
 require "kernel.process"
 
 -- snarboot.order:create_boot(0x02, "Test OS", function()
@@ -14,7 +15,7 @@ require "kernel.process"
 -- Create a new boot 
 snarboot.order:create_boot(0x02, "Snarwin SASH", function()
     print("I'm going to use SASH, you can change this later.")
-    
+    sash:main()
 end)
 
 sbootstrap:checkimpl()

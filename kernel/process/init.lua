@@ -1,6 +1,6 @@
 function protect(file)
     pcall(function()
-        return loadfile(file)();
+        return chunk(file);
     end)
 end
 
