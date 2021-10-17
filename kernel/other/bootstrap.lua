@@ -14,7 +14,7 @@ function bstr:checkimpl()
             end
         end
     else
-        print("bootstrap: Error@ could not find snarwin implementations")
+        print("bootstrap: Error could not find snarwin default implementation")
         print("bootstrap: starting in default OS: " .. boot.order.boot_table[2].disp_name) -- The default OS should be registered as boottable[2]
         boot.order.boot_table[2].init();
     end
