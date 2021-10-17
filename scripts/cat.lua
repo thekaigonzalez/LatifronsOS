@@ -1,4 +1,3 @@
-require('libmemio')
 
 local self = {}
 
@@ -12,9 +11,9 @@ function self:Main(argv)
     --- setup for an argument iterator
     for _, argkv in ipairs(argv) do
         if startswith(argkv, "-h") then
-            MemPrint(500, "cat <file>\n")
+            print("cat <file>\n")
         else
-            MemPrint(1000, "\n\n" .. io.open(argkv):read() .. "\n\n")
+            print("\n\n" .. io.open(argkv):read() .. "\n\n")
         end
     end
 end

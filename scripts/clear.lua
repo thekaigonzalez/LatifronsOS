@@ -1,10 +1,7 @@
-require('libsyscalls')
-
-
 local self = {}
 
 function self:Main(a)
-    clear_posix()
+    print("clear does nothing yet, sorry!")
 end
 
 return self
