@@ -14,7 +14,7 @@ function bstr:checkimpl()
             end
         end
     else
-        print("bootstrap: Error could not find snarwin default implementation")
+        print("bootstrap: Error: could not find snarwin default implementation")
         if boot.order.boot_table[2] == nil then
             print("bootstrap: no OS found on boottable, loading fallback OS")
             --- if it's errored

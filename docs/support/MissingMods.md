@@ -37,3 +37,7 @@ export LUA_PATH="/path/to/Snarwin/?/init.lua;;/path/to/Snarwin/?.lua"
 export LUA_CPATH="/path/to/Snarwin/?.so;;"
 
 ```
+
+## Other: Your Snarwin is corrupted
+
+If snarwin is corrupted, you may need a reinstall.
