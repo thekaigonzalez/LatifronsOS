@@ -7,7 +7,7 @@ local sbootstrap = require "kernel.other.bootstrap"
 
 local sash = require "kernel.other.sash"
 require "kernel.process"
-local recovery = require "kernel.recovery"
+
 -- snarboot.order:create_boot(0x02, "Test OS", function()
 --     print("test boot")
 -- end)

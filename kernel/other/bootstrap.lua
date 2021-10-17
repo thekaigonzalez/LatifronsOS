@@ -18,7 +18,10 @@ function bstr:checkimpl()
         if boot.order.boot_table[2] == nil then
             print("bootstrap: no OS found on boottable, loading fallback OS")
             --- if it's errored
-            boot.order.boot_table[1].init();
+            if boot.order.boot_table[1] == nil then
+                print("Error loading OS and Fallback; loading recovery..")
+                local recv = require "kernel.recovery"
+            end
         end
         print("bootstrap: starting in default OS: " .. boot.order.boot_table[2].disp_name) -- The default OS should be registered as boottable[2]
         boot.order.boot_table[2].init();
