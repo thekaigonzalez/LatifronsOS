@@ -1,9 +1,9 @@
 // interface to GNU readline
 
+#include <stdio.h>
 
 #include <readline/readline.h>
 #include <readline/history.h>
-
 
 
 #include <lua.h>

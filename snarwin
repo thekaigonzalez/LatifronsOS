@@ -1,4 +1,4 @@
-#!/usr/local/bin/lua
+#!/usr/bin/lua
 
 -- Snarwin is a Kux hyperLKernel
 
@@ -14,7 +14,58 @@ require "kernel.process"
 -- print(snarboot.order.boot_table[2].init())
 
 -- Create a new boot 
-snarboot.order:create_boot(0x02, "Snarwin SASH", function()
+
+function tprint (tbl, indent)
+    if not indent then indent = 0 end
+    local toprint = string.rep(" ", indent) .. "{\r\n"
+    indent = indent + 2 
+    for k, v in pairs(tbl) do
+      toprint = toprint .. string.rep(" ", indent)
+      if (type(k) == "number") then
+        toprint = toprint .. "[" .. k .. "] = "
+      elseif (type(k) == "string") then
+        toprint = toprint  .. k ..  "= "   
+      end
+      if (type(v) == "number") then
+        toprint = toprint .. v .. ",\r\n"
+      elseif (type(v) == "string") then
+        toprint = toprint .. "\"" .. v .. "\",\r\n"
+      elseif (type(v) == "table") then
+        toprint = toprint .. tprint(v, indent + 2) .. ",\r\n"
+      else
+        toprint = toprint .. "\"" .. tostring(v) .. "\",\r\n"
+      end
+    end
+    toprint = toprint .. string.rep(" ", indent-2) .. "}"
+    return toprint
+  end
+
+snarboot.order:create_boot(0x02, "Preload", function ()
+    print("Latifrons: Preload: Choose an OS")
+
+    local boot_browser = {}
+    for k in pairs(snarboot.order.boot_table) do
+        print("Found OS -- " .. snarboot.order.boot_table[k].disp_name)
+
+        print("Would you like to load this OS?")
+
+        if io.read() == 'y' then
+            print("Ok!")
+            snarboot.order.boot_table[k].init()
+            break;
+        end
+    end
+
+end)
+
+snarboot.order:create_boot(0x03, "Latifrons OS", function ()
+    print("Welcome to latifrons.")
+
+    
+end)
+
+
+snarboot.order:create_boot(0x04, "Snarwin SASH", function()
     print("I'm going to use SASH, you can change this later.")
     sash:main()
 end)

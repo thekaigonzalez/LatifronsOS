@@ -1,7 +1,6 @@
-# Snarwin - FreeKSD can suck my butt.
+# Latifrons - Embedded Operation System
 
-Snarwin is a replacement for FreeKSD with portability, 
-
+LatifronsOS is a light embedded operation system running Snarwin 1.0.
 ## Use
 
 Unix

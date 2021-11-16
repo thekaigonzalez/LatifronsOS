@@ -20,7 +20,7 @@ local order = {
 --- Create boot process without dirtying the boot table.
 function order:create_boot(idx, name, init)
     boottable[#boottable+1] = {id=idx, disp_name=name, init=init}
-    print(boottable[#boottable].disp_name)
+    -- print(boottable[#boottable].disp_name)
 end
 
 return order
