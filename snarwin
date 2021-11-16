@@ -41,17 +41,32 @@ function tprint (tbl, indent)
   end
 
 snarboot.order:create_boot(0x02, "Preload", function ()
-    print("Latifrons: Preload: Choose an OS")
+    
 
     local boot_browser = {}
     for k in pairs(snarboot.order.boot_table) do
-        print("Found OS -- " .. snarboot.order.boot_table[k].disp_name)
+        
+        if (io.open(".lati_shell_default") == nil) then
 
-        print("Would you like to load this OS?")
+            print("Latifrons: Preload: Choose an OS")
 
-        if io.read() == 'y' then
-            print("Ok!")
-            snarboot.order.boot_table[k].init()
+            print("Found OS -- " .. snarboot.order.boot_table[k].disp_name)
+
+            print("Would you like to load this OS?")
+            
+
+            if io.read() == 'y' then
+                print("Ok!")
+                local file = io.open(".lati_shell_default", "w")
+                file.write(tostring(k))
+                snarboot.order.boot_table[k].init()
+                break;
+            end
+        else
+            local file = io.open(".lati_shell_default", "r")
+
+            snarboot.order.boot_table[file:read("n")].init()
+
             break;
         end
     end
@@ -61,7 +76,28 @@ end)
 snarboot.order:create_boot(0x03, "Latifrons OS", function ()
     print("Welcome to latifrons.")
 
-    
+    print([[
+        _.-````'-,_
+        _,.,_ ,-'`           `'-.,_
+      /)     (\                   '``-.
+     ((      ) )                      `\
+      \)    (_/                        )\
+       |       /)           '    ,'    / \
+       `\    ^'            '     (    /  ))
+         |      _/\ ,     /    ,,`\   (  "`
+          \Y,   |  \  \  | ````| / \_ \
+            `)_/    \  \  )    ( >  ( >
+                     \( \(     |/   |/
+                     /_(/_(    /_(  /_(
+    ]])
+    print("would you like to run bash?")
+
+    if io.read() == 'y' then
+        os.execute("bash")
+    else    
+        print("Loading shell: /usr/bin/sh")
+        os.execute("./usr/bin/sh")
+    end 
 end)
 
 
